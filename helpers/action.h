@@ -29,6 +29,12 @@ class Action : public QWidget
         QAction *saveFile();
 
         /**
+         * @brief saveFileAs returns m_saveFileAs
+         * @return
+         */
+        QAction *saveFileAs();
+
+        /**
          * @brief leaveApp returns m_leaveApp
          * @return
          */
@@ -38,6 +44,7 @@ class Action : public QWidget
         QAction *m_newWindow;
         QAction *m_openFile;
         QAction *m_saveFile;
+        QAction *m_saveFileAs;
         QAction *m_leaveApp;
 };
 

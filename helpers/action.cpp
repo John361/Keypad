@@ -11,6 +11,9 @@ Action::Action(QWidget *parent) : QWidget(parent)
     m_saveFile = new QAction(tr("Save file"));
     m_saveFile->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_S));
 
+    m_saveFileAs = new QAction(tr("Save file as"));
+    m_saveFileAs->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S));
+
     m_leaveApp = new QAction(tr("Leave application"));
     m_leaveApp->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
 }
@@ -28,6 +31,11 @@ QAction *Action::openFile()
 QAction *Action::saveFile()
 {
     return m_saveFile;
+}
+
+QAction *Action::saveFileAs()
+{
+    return m_saveFileAs;
 }
 
 QAction *Action::leaveApp()

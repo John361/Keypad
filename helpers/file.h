@@ -3,7 +3,6 @@
 
 #include <QByteArray>
 #include <QFile>
-#include <QFileDialog>
 #include <QIODevice>
 #include <QMessageBox>
 #include <QTextStream>
@@ -23,10 +22,27 @@ class File : public QWidget
          */
         QString readFile();
 
+        /**
+         * @brief writeFile writes text in the same file
+         * @param text
+         */
         void writeFile(const QString &text);
+
+        /**
+         * @brief writeFileAs saves text in an other file
+         * @param fileName
+         * @param text
+         */
+        void writeFileAs(const QString &fileName, const QString &text);
 
     private:
         QFile *m_file;
+
+        /**
+         * @brief writeBytes writes bytes and closes the file
+         * @param bytes
+         */
+        void writeBytes(const QByteArray &bytes);
 
     signals:
         /**

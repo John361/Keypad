@@ -30,9 +30,14 @@ class MainWindow : public QMainWindow
         void openFile();
 
         /**
-         * @brief saveFile save text from the editor in the file
+         * @brief saveFile saves text from the editor in the file
          */
         void saveFile();
+
+        /**
+         * @brief saveFileAs saves text from the editor to a choosing file
+         */
+        void saveFileAs();
 
     private slots:
         /**

@@ -27,15 +27,38 @@ QString File::readFile()
 
 void File::writeFile(const QString &text)
 {
+    if (m_file == 0)
+    {
+        QMessageBox::warning(parentWidget(), tr("Warning"), tr("No file opened"));
+        return;
+    }
+
     if (!m_file->open(QIODevice::WriteOnly))
+    {
+        QMessageBox::warning(parentWidget(), tr("Warning"), tr("File cannot be saved"));
+        return;
+    }
+
+    writeBytes(text.toUtf8());
+}
+
+void File::writeFileAs(const QString &fileName, const QString &text)
+{
+    m_file = new QFile(fileName);
+
+    if (!m_file->open(QIODevice::ReadWrite))
     {
         QMessageBox::warning(this, tr("Warning"), tr("File cannot be saved"));
         return;
     }
 
-    const QByteArray byte(text.toUtf8());
+    writeBytes(text.toUtf8());
+}
+
+void File::writeBytes(const QByteArray &bytes)
+{
     QTextStream stream(m_file);
-    stream << byte;
+    stream << bytes;
 
     emit saveStatus(stream.status());
     m_file->close();
