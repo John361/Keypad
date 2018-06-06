@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
-{
+{   
     m_action = new Action(this);
     m_editor = new QTextEdit;
     m_file = 0;
@@ -22,17 +22,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 void MainWindow::openFile()
 {
     const QString fileName = QFileDialog::getOpenFileName(this);
-    QFile file(fileName);
+    m_file = new File(fileName);
 
-    if (!file.open(QIODevice::ReadWrite))
-    {
-        QMessageBox::warning(this, tr("Warning"), tr("The file cannot be opened"));
-        return;
-    }
-
-    QTextStream *textStream = new QTextStream(&file);
-    m_editor->setText(textStream->readAll());
-    delete textStream;
+    const QString text(m_file->readFile());
+    m_editor->setText(text);
 }
 
 void MainWindow::openNewWindow()
@@ -43,7 +36,7 @@ void MainWindow::openNewWindow()
 
 void MainWindow::saveFile()
 {
-    if (m_file == 0)
+    /*if (m_file == 0)
     {
         // TODO : create a new file
         return;
@@ -66,5 +59,5 @@ void MainWindow::saveFile()
             QMessageBox::warning(this, tr("Warning"), tr("The file cannot be saved"));
             return;
         }
-    }
+    }*/
 }

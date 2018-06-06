@@ -1,14 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QFile>
 #include <QFileDialog>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QTextEdit>
-#include <QTextStream>
 
 #include "helpers/action.h"
+#include "helpers/file.h"
 
 class MainWindow : public QMainWindow
 {
@@ -19,7 +18,7 @@ class MainWindow : public QMainWindow
 
     private:
         Action *m_action;
-        QFile *m_file;
+        File *m_file;
         QTextEdit *m_editor;
 
     signals:
