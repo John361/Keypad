@@ -36,28 +36,6 @@ void MainWindow::openNewWindow()
 
 void MainWindow::saveFile()
 {
-    /*if (m_file == 0)
-    {
-        // TODO : create a new file
-        return;
-    }
-
-    else
-    {
-        if (!m_file->open(QIODevice::ReadWrite))
-        {
-            QMessageBox::warning(this, tr("Warning"), tr("The file cannot be opened"));
-            return;
-        }
-
-        QString text = m_editor->toPlainText();
-        qint64 n = m_file->write(text.toUtf8());
-        m_file->close();
-
-        if (n == 0)
-        {
-            QMessageBox::warning(this, tr("Warning"), tr("The file cannot be saved"));
-            return;
-        }
-    }*/
+    const QString text(m_editor->toPlainText());
+    m_file->writeFile(text);
 }

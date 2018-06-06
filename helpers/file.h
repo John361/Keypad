@@ -1,6 +1,7 @@
 #ifndef FILE_H
 #define FILE_H
 
+#include <QByteArray>
 #include <QFile>
 #include <QFileDialog>
 #include <QIODevice>
@@ -22,6 +23,8 @@ class File : public QWidget
          */
         QString readFile();
 
+        void writeFile(const QString &text);
+
     private:
         QFile *m_file;
 
@@ -30,6 +33,11 @@ class File : public QWidget
          * @brief readOnly allows to know that text cannot be saved at the same place
          */
         void readOnly();
+
+        /**
+         * @brief saveStatus is emit when the file is saved
+         */
+        void saveStatus(QTextStream::Status);
 };
 
 #endif // FILE_H
