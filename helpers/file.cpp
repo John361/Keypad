@@ -22,6 +22,7 @@ QString File::readFile()
     const QString text(byte);
     m_file->close();
 
+    messageStatus(tr("File opened"));
     return text;
 }
 
@@ -60,6 +61,20 @@ void File::writeBytes(const QByteArray &bytes)
     QTextStream stream(m_file);
     stream << bytes;
 
-    emit saveStatus(stream.status());
+    switch (stream.status())
+    {
+        case 0:
+            emit messageStatus(tr("File saved"));
+            break;
+
+        case 3:
+            emit messageStatus(tr("Data not written"));
+            break;
+
+        default:
+            emit messageStatus(tr("Nothing to do"));
+            break;
+    }
+
     m_file->close();
 }

@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QStatusBar>
 #include <QTextEdit>
 
 #include "helpers/action.h"
@@ -19,7 +20,13 @@ class MainWindow : public QMainWindow
     private:
         Action *m_action;
         File *m_file;
+        QStatusBar *m_statusBar;
         QTextEdit *m_editor;
+
+        /**
+         * @brief actionAndConnection adds action to the MainWindow and connects signals and slots
+         */
+        void actionAndConnection();
 
     signals:
 
@@ -44,6 +51,8 @@ class MainWindow : public QMainWindow
          * @brief openNewWindow opens a new MainWindow
          */
         void openNewWindow();
+
+        void changeFileStatus(const QString &status);
 };
 
 #endif // MAINWINDOW_H

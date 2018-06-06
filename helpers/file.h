@@ -51,9 +51,9 @@ class File : public QWidget
         void readOnly();
 
         /**
-         * @brief saveStatus is emit when the file is saved
+         * @brief messageStatus is emit when the file is saved
          */
-        void saveStatus(QTextStream::Status);
+        void messageStatus(const QString &status);
 };
 
 #endif // FILE_H
