@@ -14,15 +14,15 @@ QString File::readFile()
 {
     if (!m_file->open(QIODevice::ReadOnly))
     {
-        QMessageBox::warning(this, tr("Warning"), tr("File cannot be opened"));
+        QMessageBox::warning(parentWidget(), tr("Warning"), tr("File can not be opened"));
         return "";
     }
 
-    const QByteArray byte = m_file->readAll();
-    const QString text(byte);
-    m_file->close();
+    const QByteArray bytes = m_file->readAll();
+    const QString text = getUtf8(bytes);
 
-    messageStatus(tr("File opened"));
+    m_file->close();
+    emit messageStatus(tr("File opened"));
     return text;
 }
 
@@ -36,7 +36,7 @@ void File::writeFile(const QString &text)
 
     if (!m_file->open(QIODevice::WriteOnly))
     {
-        QMessageBox::warning(parentWidget(), tr("Warning"), tr("File cannot be saved"));
+        QMessageBox::warning(parentWidget(), tr("Warning"), tr("File can not be saved"));
         return;
     }
 
@@ -49,7 +49,7 @@ void File::writeFileAs(const QString &fileName, const QString &text)
 
     if (!m_file->open(QIODevice::ReadWrite))
     {
-        QMessageBox::warning(this, tr("Warning"), tr("File cannot be saved"));
+        QMessageBox::warning(this, tr("Warning"), tr("File can not be saved"));
         return;
     }
 
@@ -77,4 +77,19 @@ void File::writeBytes(const QByteArray &bytes)
     }
 
     m_file->close();
+}
+
+QString File::getUtf8(const QByteArray &bytes)
+{
+    QTextCodec::ConverterState state;
+    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
+    const QString text = codec->toUnicode(bytes.constData(), bytes.size(), &state);
+
+    if (state.invalidChars > 0)
+    {
+        QMessageBox::warning(parentWidget(), tr("Warning"), tr("File is not in UTF-8 and cannot be opened"));
+        return "";
+    }
+
+    return text;
 }

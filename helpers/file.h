@@ -5,8 +5,11 @@
 #include <QFile>
 #include <QIODevice>
 #include <QMessageBox>
+#include <QTextCodec>
+#include <QTextDecoder>
 #include <QTextStream>
 #include <QWidget>
+#include <QDebug>
 
 class File : public QWidget
 {
@@ -43,6 +46,13 @@ class File : public QWidget
          * @param bytes
          */
         void writeBytes(const QByteArray &bytes);
+
+        /**
+         * @brief getUtf8 converts bytes to utf8 and return the text
+         * @param bytes
+         * @return empty string if it's not correct
+         */
+        QString getUtf8(const QByteArray &bytes);
 
     signals:
         /**
