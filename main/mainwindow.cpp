@@ -4,7 +4,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {   
     m_action = new Action(this);
     m_editor = new QTextEdit;
-    m_file = new File();
+    m_file = new File;
     m_statusBar = new QStatusBar;
 
     actionAndConnection();
@@ -14,9 +14,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::openFile()
 {
-    const QString fileName = QFileDialog::getOpenFileName(this);
-    m_file = new File(fileName);
-
     const QString text(m_file->readFile());
     m_editor->setText(text);
 
@@ -37,10 +34,8 @@ void MainWindow::saveFile()
 
 void MainWindow::saveFileAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(this);
     const QString text(m_editor->toPlainText());
-
-    m_file->writeFileAs(fileName, text);
+    m_file->writeFileAs(text);
 }
 
 void MainWindow::changeFileStatus(const QString &status)

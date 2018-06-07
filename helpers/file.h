@@ -3,13 +3,12 @@
 
 #include <QByteArray>
 #include <QFile>
+#include <QFileDialog>
 #include <QIODevice>
 #include <QMessageBox>
 #include <QTextCodec>
-#include <QTextDecoder>
 #include <QTextStream>
 #include <QWidget>
-#include <QDebug>
 
 class File : public QWidget
 {
@@ -20,35 +19,34 @@ class File : public QWidget
         File(QWidget *parent = nullptr);
 
         /**
-         * @brief readFile reads all lines from the file
+         * @brief readFile reads all lines from an UTF-8 file given by QFileDialog
          * @return
          */
         QString readFile();
 
         /**
-         * @brief writeFile writes text in the same file
+         * @brief writeFile writes text in the same file if readFile() was called before else calls writeFileAs(const QString&)
          * @param text
          */
         void writeFile(const QString &text);
 
         /**
-         * @brief writeFileAs saves text in an other file
-         * @param fileName
+         * @brief writeFileAs saves all text in an other file
          * @param text
          */
-        void writeFileAs(const QString &fileName, const QString &text);
+        void writeFileAs(const QString &text);
 
     private:
         QFile *m_file;
 
         /**
-         * @brief writeBytes writes bytes and closes the file
+         * @brief writeBytes writes bytes in the current file and closes it
          * @param bytes
          */
         void writeBytes(const QByteArray &bytes);
 
         /**
-         * @brief getUtf8 converts bytes to utf8 and return the text
+         * @brief getUtf8 converts bytes to utf8 and return the text after closes the file. File is set to 0 if its not UTF-8
          * @param bytes
          * @return empty string if it's not correct
          */
