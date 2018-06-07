@@ -10,14 +10,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     actionAndConnection();
     setStatusBar(m_statusBar);
     setCentralWidget(m_editor);
+
+    connect(m_file, SIGNAL(messageStatus(QString)), this, SLOT(changeFileStatus(QString)));
+    connect(m_file, SIGNAL(fileNameChanged(QString)), this, SLOT(setWindowTitle(QString)));
 }
 
 void MainWindow::openFile()
 {
     const QString text(m_file->readFile());
     m_editor->setText(text);
-
-    connect(m_file, SIGNAL(messageStatus(QString)), this, SLOT(changeFileStatus(QString)));
 }
 
 void MainWindow::openNewWindow()

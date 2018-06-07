@@ -4,6 +4,7 @@
 #include <QByteArray>
 #include <QFile>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QIODevice>
 #include <QMessageBox>
 #include <QTextCodec>
@@ -39,6 +40,8 @@ class File : public QWidget
     private:
         QFile *m_file;
 
+        QFileInfo *m_fileInfo;
+
         /**
          * @brief writeBytes writes bytes in the current file and closes it
          * @param bytes
@@ -62,6 +65,25 @@ class File : public QWidget
          * @brief messageStatus is emit when the file is saved
          */
         void messageStatus(const QString &status);
+
+        /**
+         * @brief fileNameChanged is emit when m_file changes
+         * @param name
+         */
+        void fileNameChanged(const QString &name);
+
+        /**
+         * @brief privateFileChanged
+         * @param fileName
+         */
+        void privateFileChanged(const QString &fileName);
+
+    private slots:
+        /**
+         * @brief onPrivateFileChanged updates m_fileInfo
+         * @param fileName
+         */
+        void onPrivateFileChanged(const QString &fileName);
 };
 
 #endif // FILE_H
