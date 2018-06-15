@@ -2,6 +2,7 @@
 #define FILE_H
 
 #include <QByteArray>
+#include <QDir>
 #include <QFile>
 #include <QFileDialog>
 #include <QFileInfo>

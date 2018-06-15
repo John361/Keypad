@@ -15,7 +15,7 @@ File::File(QWidget *parent) : QWidget(parent)
 
 QString File::readFile()
 {
-    const QString fileName = QFileDialog::getOpenFileName(parentWidget());
+    const QString fileName = QFileDialog::getOpenFileName(parentWidget(), tr("Open a file"), QDir::homePath());
     m_file = new QFile(fileName);
     emit onPrivateFileChanged(fileName);
 
@@ -27,8 +27,6 @@ QString File::readFile()
 
     const QByteArray bytes = m_file->readAll();
     const QString text = getUtf8(bytes);
-
-    emit messageStatus(tr("File opened"));
     return text;
 }
 
@@ -51,7 +49,7 @@ void File::writeFile(const QString &text)
 
 void File::writeFileAs(const QString &text)
 {
-    const QString fileName = QFileDialog::getSaveFileName(parentWidget());
+    const QString fileName = QFileDialog::getSaveFileName(parentWidget(), tr("Save file as"), QDir::homePath());
     m_file = new QFile(fileName);
     emit onPrivateFileChanged(fileName);
 
@@ -99,9 +97,10 @@ QString File::getUtf8(const QByteArray &bytes)
         QMessageBox::warning(parentWidget(), tr("Warning"), tr("File is not in UTF-8 and cannot be opened"));
         m_file = 0;
         emit onPrivateFileChanged("");
-        return "";
+        readFile();
     }
 
+    emit messageStatus(tr("File opened"));
     return text;
 }
 
