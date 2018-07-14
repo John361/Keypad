@@ -15,6 +15,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_file, SIGNAL(fileNameChanged(QString)), this, SLOT(setWindowTitle(QString)));
 }
 
+void MainWindow::openPalette()
+{
+
+}
+
 void MainWindow::openFile()
 {
     const QString text(m_file->readFile());
@@ -47,12 +52,14 @@ void MainWindow::changeFileStatus(const QString &status)
 void MainWindow::actionAndConnection()
 {
     addAction(m_action->newWindow());
+    addAction(m_action->openPalette());
     addAction(m_action->openFile());
     addAction(m_action->saveFile());
     addAction(m_action->saveFileAs());
     addAction(m_action->leaveApp());
 
     connect(m_action->newWindow(), SIGNAL(triggered(bool)), this, SLOT(openNewWindow()));
+    connect(m_action->openPalette(), SIGNAL(triggered(bool)), this, SLOT(openPalette()));
     connect(m_action->openFile(), SIGNAL(triggered(bool)), this, SLOT(openFile()));
     connect(m_action->saveFile(), SIGNAL(triggered(bool)), this, SLOT(saveFile()));
     connect(m_action->saveFileAs(), SIGNAL(triggered(bool)), this, SLOT(saveFileAs()));

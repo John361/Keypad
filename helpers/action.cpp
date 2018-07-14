@@ -5,6 +5,9 @@ Action::Action(QWidget *parent) : QWidget(parent)
     m_newWindow = new QAction(tr("New window"));
     m_newWindow->setShortcut(QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_W));
 
+    m_openPalette = new QAction(tr("Open palette"));
+    m_openPalette->setShortcut(QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_P));
+
     m_openFile = new QAction(tr("Open file"));
     m_openFile->setShortcut(QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_O));
 
@@ -21,6 +24,11 @@ Action::Action(QWidget *parent) : QWidget(parent)
 QAction *Action::newWindow()
 {
     return m_newWindow;
+}
+
+QAction *Action::openPalette()
+{
+    return m_openPalette;
 }
 
 QAction *Action::openFile()

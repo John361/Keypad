@@ -11,6 +11,12 @@ class Action : public QWidget
         Action(QWidget *parent = nullptr);
 
         /**
+         * @brief openPalette returns m_openPalette
+         * @return
+         */
+        QAction *openPalette();
+
+        /**
          * @brief newWindow returns m_newWindow
          * @return
          */
@@ -42,6 +48,7 @@ class Action : public QWidget
 
     private:
         QAction *m_newWindow;
+        QAction *m_openPalette;
         QAction *m_openFile;
         QAction *m_saveFile;
         QAction *m_saveFileAs;
