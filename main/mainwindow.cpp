@@ -15,10 +15,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_file, SIGNAL(fileNameChanged(QString)), this, SLOT(setWindowTitle(QString)));
 }
 
-void MainWindow::openPalette()
+/*void MainWindow::openPalette()
 {
 
-}
+}*/
 
 void MainWindow::openFile()
 {
