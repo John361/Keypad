@@ -3,8 +3,8 @@
 
 #include <QMenuBar>
 
-class MainMenu : public QMenuBar
-{
+
+class MainMenu : public QMenuBar {
     public:
         MainMenu(QWidget *parent = nullptr);
 

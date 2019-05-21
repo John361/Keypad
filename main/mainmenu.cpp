@@ -1,6 +1,5 @@
 #include "mainmenu.h"
 
-MainMenu::MainMenu(QWidget *parent) : QMenuBar(parent)
-{
+MainMenu::MainMenu(QWidget *parent) : QMenuBar(parent) {
 
 }

@@ -3,8 +3,8 @@
 
 #include <QMenu>
 
-class MenuFile : public QMenu
-{
+
+class MenuFile : public QMenu {
     public:
         MenuFile(const QString &title, QWidget *parent = nullptr);
 };

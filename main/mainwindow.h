@@ -8,9 +8,10 @@
 
 #include "helpers/action.h"
 #include "helpers/file.h"
+#include "textedit.h"
 
-class MainWindow : public QMainWindow
-{
+
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
     public:
@@ -20,7 +21,8 @@ class MainWindow : public QMainWindow
         Action *m_action;
         File *m_file;
         QStatusBar *m_statusBar;
-        QTextEdit *m_editor;
+        TextEdit *m_editor;
+
 
         /**
          * @brief actionAndConnection adds action to the MainWindow and connects signals and slots

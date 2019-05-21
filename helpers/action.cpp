@@ -1,7 +1,7 @@
 #include "action.h"
 
-Action::Action(QWidget *parent) : QWidget(parent)
-{
+
+Action::Action(QWidget *parent) : QWidget(parent) {
     m_newWindow = new QAction(tr("New window"));
     m_newWindow->setShortcut(QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_W));
 
@@ -21,32 +21,32 @@ Action::Action(QWidget *parent) : QWidget(parent)
     m_leaveApp->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
 }
 
-QAction *Action::newWindow()
-{
+
+QAction *Action::newWindow() {
     return m_newWindow;
 }
 
-QAction *Action::openPalette()
-{
+
+QAction *Action::openPalette() {
     return m_openPalette;
 }
 
-QAction *Action::openFile()
-{
+
+QAction *Action::openFile() {
     return m_openFile;
 }
 
-QAction *Action::saveFile()
-{
+
+QAction *Action::saveFile() {
     return m_saveFile;
 }
 
-QAction *Action::saveFileAs()
-{
+
+QAction *Action::saveFileAs() {
     return m_saveFileAs;
 }
 
-QAction *Action::leaveApp()
-{
+
+QAction *Action::leaveApp() {
     return m_leaveApp;
 }

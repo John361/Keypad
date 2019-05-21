@@ -5,8 +5,8 @@
 #include <QCompleter>
 #include <QStringListModel>
 
-class Palette : QWidget
-{
+
+class Palette : QWidget {
     public:
         Palette(QStringListModel *model, QWidget *parent = nullptr);
 

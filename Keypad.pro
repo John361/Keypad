@@ -7,7 +7,9 @@ SOURCES += \
     menu/menufile.cpp \
     helpers/action.cpp \
     helpers/file.cpp \
-    helpers/palette.cpp
+    helpers/linenumberarea.cpp \
+    helpers/palette.cpp \
+    main/textedit.cpp
 
 HEADERS += \
     main/mainwindow.h \
@@ -15,4 +17,6 @@ HEADERS += \
     menu/menufile.h \
     helpers/action.h \
     helpers/file.h \
-    helpers/palette.h
+    helpers/linenumberarea.h \
+    helpers/palette.h \
+    main/textedit.h

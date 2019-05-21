@@ -1,9 +1,9 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
-{   
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     m_action = new Action(this);
-    m_editor = new QTextEdit;
+    m_editor = new TextEdit;
     m_file = new File;
     m_statusBar = new QStatusBar;
 
@@ -15,42 +15,37 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_file, SIGNAL(fileNameChanged(QString)), this, SLOT(setWindowTitle(QString)));
 }
 
-/*void MainWindow::openPalette()
-{
 
-}*/
-
-void MainWindow::openFile()
-{
+void MainWindow::openFile() {
     const QString text(m_file->readFile());
     m_editor->setText(text);
 }
 
-void MainWindow::openNewWindow()
-{
+
+void MainWindow::openNewWindow() {
     MainWindow *mw = new MainWindow;
     mw->show();
 }
 
-void MainWindow::saveFile()
-{
+
+void MainWindow::saveFile() {
     const QString text(m_editor->toPlainText());
     m_file->writeFile(text);
 }
 
-void MainWindow::saveFileAs()
-{
+
+void MainWindow::saveFileAs() {
     const QString text(m_editor->toPlainText());
     m_file->writeFileAs(text);
 }
 
-void MainWindow::changeFileStatus(const QString &status)
-{
+
+void MainWindow::changeFileStatus(const QString &status) {
     m_statusBar->showMessage(status, 3000);
 }
 
-void MainWindow::actionAndConnection()
-{
+
+void MainWindow::actionAndConnection() {
     addAction(m_action->newWindow());
     addAction(m_action->openPalette());
     addAction(m_action->openFile());

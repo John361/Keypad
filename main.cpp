@@ -1,8 +1,9 @@
 #include <QApplication>
+
 #include "main/mainwindow.h"
 
-int main(int argc, char *argv[])
-{
+
+int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     MainWindow mw;

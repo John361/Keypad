@@ -12,8 +12,8 @@
 #include <QTextStream>
 #include <QWidget>
 
-class File : public QWidget
-{
+
+class File : public QWidget {
     Q_OBJECT
 
     public:

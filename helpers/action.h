@@ -3,8 +3,8 @@
 
 #include <QAction>
 
-class Action : public QWidget
-{
+
+class Action : public QWidget {
     Q_OBJECT
 
     public:
